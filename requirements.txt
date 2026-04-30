@@ -1,7 +1,8 @@
-streamlit
+stensorflow==2.12.0
+numpy<1.24
 pandas
-numpy
+streamlit
 scikit-learn
-nltk
 matplotlib
 seaborn
+nltk

@@ -5,3 +5,4 @@ scikit-learn
 nltk
 matplotlib
 seaborn
+keras-tuner

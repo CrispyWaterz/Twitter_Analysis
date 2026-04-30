@@ -308,10 +308,10 @@ hybrid_model.summary()
 To further optimize our model, we'll use Keras Tuner to systematically search for the best combination of hyperparameters, such as the number of filters in `Conv1D` layers, units in `LSTM` layers, and dropout rates. This will help us find a model configuration that potentially yields better performance.
 """
 
-try:
-    import keras_tuner as kt
-except ImportError:
-    kt = None
+!pip install keras-tuner
+
+import keras_tuner as kt
+
 
 # Define the model building function for Keras Tuner
 def build_tunable_model(hp):

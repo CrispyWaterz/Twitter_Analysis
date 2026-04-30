@@ -1,1 +1,2 @@
 python-3.10
+keras-tuner==1.4.7

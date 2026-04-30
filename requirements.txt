@@ -5,4 +5,3 @@ tensorflow==2.13.0
 nltk
 scikit-learn
 joblib
-python-3.11

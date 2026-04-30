@@ -310,7 +310,6 @@ To further optimize our model, we'll use Keras Tuner to systematically search fo
 
 import keras_tuner as kt
 
-
 # Define the model building function for Keras Tuner
 def build_tunable_model(hp):
     model = Sequential([

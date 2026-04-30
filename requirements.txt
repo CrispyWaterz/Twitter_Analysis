@@ -1,7 +1,7 @@
 streamlit
 pandas
 numpy
-tensorflow==2.13.0
-nltk
 scikit-learn
-joblib
+nltk
+matplotlib
+seaborn

@@ -2,7 +2,9 @@ streamlit
 pandas
 numpy
 scikit-learn
+tensorflow
+keras-tuner
 nltk
 matplotlib
 seaborn
-keras-tuner
+joblib

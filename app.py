@@ -72,7 +72,7 @@ print("NLTK resources loaded, preprocessing function and global parameters defin
 
 # --- Load twitter_training.csv ---
 # Define the directory path (adjust if different)
-data_raw_path = '/content/drive/MyDrive/Kuliah/Skripsi/Data RAW'
+data_raw_path = './data'
 twitter_training_path = os.path.join(data_raw_path, 'twitter_training.csv')
 
 if os.path.exists(twitter_training_path):

@@ -340,7 +340,7 @@ def build_tunable_model(hp):
 print("Tunable model building function defined.")
 
 # Initialize the Keras Tuner (RandomSearch in this case)
-tuner = keras_tuner.RandomSearch(
+tuner = kt.RandomSearch(
     build_tunable_model,
     objective='val_accuracy',
     max_trials=5,  # Number of different hyperparameter combinations to try

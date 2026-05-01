@@ -2,9 +2,9 @@ streamlit
 pandas
 numpy
 scikit-learn
-tensorflow
+tensorflow==2.13.0
 keras-tuner
 nltk
+joblib
 matplotlib
 seaborn
-joblib

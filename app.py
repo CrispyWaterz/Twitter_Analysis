@@ -56,7 +56,7 @@ def download_from_gdrive(file_id: str, dest_path: str, label: str) -> list[str]:
 # ── Page config ──────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="Sentiment Analyser",
-    page_icon="🧠",
+    page_icon="🐦",
     layout="centered",
 )
 

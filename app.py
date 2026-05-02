@@ -1,452 +1,275 @@
-[     UTC     ] Logs for twitteranalysis-r5dktkxh3vy2ulwnj7sp3s.streamlit.app/
-
-────────────────────────────────────────────────────────────────────────────────────────
-
-[10:50:55] 🖥 Provisioning machine...
-
-[10:51:01] 🎛 Preparing system...
-
-[10:51:06] ⛓ Spinning up manager process...
-
-[10:51:12] 🎈 Inflating balloons...
-
-[10:52:23] 📖 Unpacking Comic Sans RAR files...
-
-[10:50:59] 🚀 Starting up repository: 'twitter_analysis', branch: 'main', main module: 'app.py'
-
-[10:50:59] 🐙 Cloning repository...
-
-[10:50:59] 🐙 Cloning into '/mount/src/twitter_analysis'...
-
-[10:50:59] 🐙 Cloned repository!
-
-[10:50:59] 🐙 Pulling code changes from Github...
-
-[10:51:00] 📦 Processing dependencies...
-
-
-──────────────────────────────────────── uv ───────────────────────────────────────────
-
-
-Using uv pip install.
-
-Using Python 3.10.20 environment at /home/adminuser/venv
-
-Resolved 88 packages in 1.10s
-
-Prepared 87 packages in 15.86s
-
-Installed 87 packages in 631ms
-
- + absl-py==2.4.0
-
- + altair==5.3.0
-
- + astunparse==1.6.3
-
- + attrs==26.1.0
-
- + beautifulsoup4==4.14.3
-
- + blinker==1.9.0
-
- + cachetools==6.2.6
-
- + certifi==2026.4.22
-
- + cffi==2.0.0[2026-05-02 10:51:18.217884] 
-
- + charset-normalizer==3.4.7
-
- + click==8.3.3
-
- + contourpy==1.3.2
-
- + cryptography==45.0.7[2026-05-02 10:51:18.218149] 
-
- + cycler==0.12.1
-
- + filelock==3.29.0
-
- + flatbuffers==25.12.19
-
- + fonttools==4.62.1
-
- + gast==0.4.0
-
- + gdown==6.0.0
-
- + gitdb==4.0.12
-
- + gitpython==3.1.49
-
- + google-auth==2.50.0
-
- + google-auth-oauthlib==1.0.0
-
- + google-pasta==0.2.0
-
- + grpcio==1.74.0
-
- + h5py==3.16.0
-
- + idna==3.13
-
- + jinja2==3.1.6
-
- + joblib==1.5.3
-
- + jsonschema==4.26.0
-
- + jsonschema-specifications==2025.9.1
-
- + keras==2.13.1
-
- + keras-tuner==1.4.7
-
- + kiwisolver==1.5.0
-
- + kt-legacy==1.0.5
-
- + [2026-05-02 10:51:18.218537] libclang==18.1.1
-
- + markdown==3.10.2
-
- + markupsafe==3.0.3
-
- + matplotlib==3.10.9
-
- + nltk==3.9.4
-
- + numpy==1.24.3
-
- + oauthlib==3.3.1
-
- + opt-einsum==3.4.0
-
- + packaging==26.2
-
- + pandas==[2026-05-02 10:51:18.218878] 2.3.3
-
- + pillow==12.2.0
-
- + protobuf==4.25.9
-
- + pyarrow==24.0.0
-
- + pyasn1==0.6.3
-
- + pyasn1-modules==0.4.2
-
- + pycparser==3.0
-
- + pydeck[2026-05-02 10:51:18.219201] ==0.9.2
-
- + pyparsing==3.3.2
-
- + pysocks==1.7.1
-
- + python-dateutil==2.9.0.post0
-
- + pytz==2026.1.post1
-
- + referencing[2026-05-02 10:51:18.219441] ==0.37.0
-
- + regex==2026.4.4
-
- + requests==2.33.1
-
- + requests-oauthlib==2.0.0
-
- + rpds-py==0.30.0
-
- + scikit-learn==1.7.2
-
- +[2026-05-02 10:51:18.219621]  scipy==1.15.3
-
- + seaborn==0.13.2
-
- + six==1.17.0
-
- + smmap==5.0.3
-
- + soupsieve==[2026-05-02 10:51:18.219792] 2.8.3
-
- + streamlit==1.52.2
-
- + tenacity==9.1.4
-
- + tensorboard==2.13.0
-
- + tensorboard-data-server==0.7.2
-
- +[2026-05-02 10:51:18.220025]  tensorflow==2.13.0
-
- + tensorflow-estimator==2.13.0
-
- + tensorflow-io-gcs-filesystem==0.37.1
-
- + termcolor==3.3.0
-
- + threadpoolctl==3.6.0
-
- + toml==0.10.2
-
- + toolz==1.1.0
-
- + tornado==6.5.5
-
- + tqdm==4.67.3
-
- + typing-extensions==4.5.0[2026-05-02 10:51:18.220191] 
-
- + tzdata==2026.2
-
- + urllib3==2.6.3
-
- + watchdog==6.0.0
-
- + werkzeug==3.1.8
-
- + wheel==0.47.0
-
- + wrapt[2026-05-02 10:51:18.220327] ==2.1.2
-
-Checking if Streamlit is installed
-
-Found Streamlit version 1.52.2 in the environment
-
-Installing rich for an improved exception logging
-
-Using uv pip install.
-
-Using Python 3.10.20 environment at /home/adminuser/venv
-
-Resolved 4 packages in 120ms
-
-Prepared 4 packages in 87ms
-
-Installed 4 packages in 11ms
-
- + markdown-it-py==4.0.0
-
- + mdurl==0.1.2
-
- + pygments==[2026-05-02 10:51:19.626137] 2.20.0
-
- + rich==15.0.0
-
-
-────────────────────────────────────────────────────────────────────────────────────────
-
-
-[10:51:20] 🐍 Python dependencies were installed from /mount/src/twitter_analysis/requirements.txt using uv.
-
-Check if streamlit is installed
-
-Streamlit is already installed
-
-[10:51:21] 📦 Processed dependencies!
-
-
-
-
-2026-05-02 10:51:29.894499: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-
-2026-05-02 10:51:29.940555: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-
-2026-05-02 10:51:29.941229: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
-
-To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-
-2026-05-02 10:51:33.001484: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-
-────────────────────── Traceback (most recent call last) ───────────────────────
-
-  /home/adminuser/venv/lib/python3.10/site-packages/streamlit/runtime/caching/  
-
-  cached_message_replay.py:280 in replay_cached_messages                        
-
-────────────────────────────────────────────────────────────────────────────────
-
-KeyError: '140345195602336'
-
-
-The above exception was the direct cause of the following exception:
-
-
-────────────────────── Traceback (most recent call last) ───────────────────────
-
-  /home/adminuser/venv/lib/python3.10/site-packages/streamlit/runtime/scriptru  
-
-  nner/exec_code.py:129 in exec_func_with_error_handling                        
-
-                                                                                
-
-  /home/adminuser/venv/lib/python3.10/site-packages/streamlit/runtime/scriptru  
-
-  nner/script_runner.py:671 in code_to_exec                                     
-
-                                                                                
-
-  /mount/src/twitter_analysis/app.py:152 in <module>                            
-
-                                                                                
-
-    149 │   return results                                                      
-
-    150                                                                         
-
-    151 # ── Load resources ──────────────────────────────────────────────────  
-
-  ❱ 152 model, tokenizer, load_errors = load_model_and_tokenizer()              
-
-    153                                                                         
-
-    154 # ── UI ──────────────────────────────────────────────────────────────  
-
-    155 st.title("🧠 Sentiment Analyser")                                       
-
-                                                                                
-
-  /home/adminuser/venv/lib/python3.10/site-packages/streamlit/runtime/caching/  
-
-  cache_utils.py:228 in __call__                                                
-
-                                                                                
-
-  /home/adminuser/venv/lib/python3.10/site-packages/streamlit/runtime/caching/  
-
-  cache_utils.py:253 in _get_or_create_cached_value                             
-
-                                                                                
-
-  /home/adminuser/venv/lib/python3.10/site-packages/streamlit/runtime/caching/  
-
-  cache_utils.py:276 in _handle_cache_hit                                       
-
-                                                                                
-
-  /home/adminuser/venv/lib/python3.10/site-packages/streamlit/runtime/caching/  
-
-  cached_message_replay.py:291 in replay_cached_messages                        
-
-────────────────────────────────────────────────────────────────────────────────
-
-CacheReplayClosureError: While running `load_model_and_tokenizer()`, a streamlit
-
-element is called on some layout block
-
-created outside the function. This is incompatible with replaying the cached
-
-effect of that element, because the referenced block might not exist when
-
-the replay happens.
-
-
-How to fix this:
-
-* Move the creation of $THING inside `load_model_and_tokenizer()`.
-
-* Move the call to the streamlit element outside of 
-
-`load_model_and_tokenizer()`.
-
-* Remove the `@st.cache_resource` decorator from `load_model_and_tokenizer()`.
-
-            
-
-────────────────────── Traceback (most recent call last) ───────────────────────
-
-  /home/adminuser/venv/lib/python3.10/site-packages/streamlit/runtime/caching/  
-
-  cached_message_replay.py:280 in replay_cached_messages                        
-
-────────────────────────────────────────────────────────────────────────────────
-
-KeyError: '140345195602336'
-
-
-The above exception was the direct cause of the following exception:
-
-
-────────────────────── Traceback (most recent call last) ───────────────────────
-
-  /home/adminuser/venv/lib/python3.10/site-packages/streamlit/runtime/scriptru  
-
-  nner/exec_code.py:129 in exec_func_with_error_handling                        
-
-                                                                                
-
-  /home/adminuser/venv/lib/python3.10/site-packages/streamlit/runtime/scriptru  
-
-  nner/script_runner.py:671 in code_to_exec                                     
-
-                                                                                
-
-  /mount/src/twitter_analysis/app.py:152 in <module>                            
-
-                                                                                
-
-    149 │   return results                                                      
-
-    150                                                                         
-
-    151 # ── Load resources ──────────────────────────────────────────────────  
-
-  ❱ 152 model, tokenizer, load_errors = load_model_and_tokenizer()              
-
-    153                                                                         
-
-    154 # ── UI ──────────────────────────────────────────────────────────────  
-
-    155 st.title("🧠 Sentiment Analyser")                                       
-
-                                                                                
-
-  /home/adminuser/venv/lib/python3.10/site-packages/streamlit/runtime/caching/  
-
-  cache_utils.py:228 in __call__                                                
-
-                                                                                
-
-  /home/adminuser/venv/lib/python3.10/site-packages/streamlit/runtime/caching/  
-
-  cache_utils.py:253 in _get_or_create_cached_value                             
-
-                                                                                
-
-  /home/adminuser/venv/lib/python3.10/site-packages/streamlit/runtime/caching/  
-
-  cache_utils.py:276 in _handle_cache_hit                                       
-
-                                                                                
-
-  /home/adminuser/venv/lib/python3.10/site-packages/streamlit/runtime/caching/  
-
-  cached_message_replay.py:291 in replay_cached_messages                        
-
-────────────────────────────────────────────────────────────────────────────────
-
-CacheReplayClosureError: While running `load_model_and_tokenizer()`, a streamlit
-
-element is called on some layout block
-
-created outside the function. This is incompatible with replaying the cached
-
-effect of that element, because the referenced block might not exist when
-
-the replay happens.
-
-
-How to fix this:
-
-* Move the creation of $THING inside `load_model_and_tokenizer()`.
-
-* Move the call to the streamlit element outside of 
-
-`load_model_and_tokenizer()`.
-
-* Remove the `@st.cache_resource` decorator from `load_model_and_tokenizer()`.
-
-            
+# app.py — Production-ready Streamlit Sentiment Analysis App
+# Model and tokenizer are downloaded from Google Drive on first startup
+# and cached locally so subsequent restarts skip the download.
+#
+# To update the files, change the FILE_IDS below and redeploy.
+
+import os
+import re
+import sys
+
+import gdown
+import joblib
+import nltk
+import numpy as np
+import pandas as pd
+import streamlit as st
+import tensorflow as tf
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+
+# ── Constants (must match values used during training) ──────────────────────
+MAX_SEQUENCE_LENGTH = 100
+SENTIMENT_LABELS = {0: "Negative", 1: "Neutral", 2: "Positive"}
+SENTIMENT_EMOJI  = {0: "😠", 1: "😐", 2: "😊"}
+SENTIMENT_COLOR  = {0: "#e74c3c", 1: "#f39c12", 2: "#2ecc71"}
+
+# ── Google Drive file IDs ────────────────────────────────────────────────────
+# Share each file in Drive with "Anyone with the link → Viewer" or it will
+# return an HTML permission-error page instead of the actual file.
+MODEL_GDRIVE_ID     = "1Ix6TNefsFk0f31JfpjeNrsBCx_ffu9YK"
+TOKENIZER_GDRIVE_ID = "1GDukP-GtIJIrX5BShSolAz2xYRqtypEI"
+
+# Local paths where the files are cached after the first download.
+# Streamlit Cloud gives each deployment ephemeral disk space; the cache
+# persists for the lifetime of the running container (~hours / until restart).
+CACHE_DIR      = "/tmp/sentiment_model_cache"
+MODEL_PATH     = os.path.join(CACHE_DIR, "hybrid_sentiment_model.keras")
+TOKENIZER_PATH = os.path.join(CACHE_DIR, "tokenizer_labeled.joblib")
+
+os.makedirs(CACHE_DIR, exist_ok=True)
+
+
+def download_from_gdrive(file_id: str, dest_path: str, label: str) -> list[str]:
+    """Download a file from Google Drive using gdown. Returns a list of errors."""
+    url = f"https://drive.google.com/uc?id={file_id}"
+    try:
+        gdown.download(url, dest_path, quiet=False, fuzzy=True)
+        if not os.path.exists(dest_path) or os.path.getsize(dest_path) == 0:
+            return [
+                f"❌ Downloaded `{label}` appears to be empty. "
+                "Make sure the file is shared as **Anyone with the link → Viewer** in Google Drive."
+            ]
+    except Exception as exc:
+        return [f"❌ Failed to download `{label}` from Google Drive: `{exc}`"]
+    return []
+
+# ── Page config ──────────────────────────────────────────────────────────────
+st.set_page_config(
+    page_title="Sentiment Analyser",
+    page_icon="🧠",
+    layout="centered",
+)
+
+# ── NLTK setup (cached so it only runs once per session) ────────────────────
+@st.cache_resource(show_spinner="Downloading NLTK data…")
+def load_nltk():
+    for pkg in ("stopwords", "wordnet", "punkt", "punkt_tab"):
+        nltk.download(pkg, quiet=True)
+    from nltk.corpus import stopwords
+    from nltk.stem import WordNetLemmatizer
+    return set(stopwords.words("english")), WordNetLemmatizer()
+
+stop_words, lemmatizer = load_nltk()
+
+# ── Text preprocessing (identical to training pipeline) ─────────────────────
+def preprocess_text(text: str) -> str:
+    if not isinstance(text, str):
+        return ""
+    text = text.lower()
+    text = re.sub(r"http\S+|www\S+|https\S+", "", text, flags=re.MULTILINE)
+    text = re.sub(r"@\w+", "", text)
+    text = re.sub(r"#\w+", "", text)
+    text = re.sub(r"[^a-zA-Z\s]", "", text)
+    tokens = nltk.word_tokenize(text)
+    tokens = [
+        lemmatizer.lemmatize(w)
+        for w in tokens
+        if w not in stop_words and len(w) > 1
+    ]
+    return " ".join(tokens)
+
+# ── Model & tokenizer loader (cached) ───────────────────────────────────────
+@st.cache_resource(show_spinner="Downloading & loading model… (first run only, may take a minute)")
+def load_model_and_tokenizer():
+    errors = []
+
+    # Download model if not already cached
+    if not os.path.exists(MODEL_PATH) or os.path.getsize(MODEL_PATH) == 0:
+        errors += download_from_gdrive(MODEL_GDRIVE_ID, MODEL_PATH, "model")
+
+    # Download tokenizer if not already cached
+    if not os.path.exists(TOKENIZER_PATH) or os.path.getsize(TOKENIZER_PATH) == 0:
+        errors += download_from_gdrive(TOKENIZER_GDRIVE_ID, TOKENIZER_PATH, "tokenizer")
+
+    if errors:
+        return None, None, errors
+
+    # Load model
+    try:
+        model = tf.keras.models.load_model(MODEL_PATH)
+    except Exception as exc:
+        return None, None, [
+            f"❌ Model downloaded but failed to load: `{exc}`\n\n"
+            "This usually means the `.keras` file is corrupted or the wrong format. "
+            "Re-export it with `model.save('hybrid_sentiment_model.keras')` in Colab."
+        ]
+
+    # Load tokenizer
+    try:
+        tokenizer = joblib.load(TOKENIZER_PATH)
+    except Exception as exc:
+        return None, None, [
+            f"❌ Tokenizer downloaded but failed to load: `{exc}`\n\n"
+            "Re-export it with `joblib.dump(tokenizer_labeled, 'tokenizer_labeled.joblib')` in Colab."
+        ]
+
+    return model, tokenizer, []
+
+# ── Prediction helper ────────────────────────────────────────────────────────
+def predict(texts: list[str], model, tokenizer) -> list[dict]:
+    processed = [preprocess_text(t) for t in texts]
+    sequences = tokenizer.texts_to_sequences(processed)
+    padded    = pad_sequences(sequences, maxlen=MAX_SEQUENCE_LENGTH,
+                              padding="post", truncating="post")
+    probs     = model.predict(padded, verbose=0)
+    results   = []
+    for i, prob_row in enumerate(probs):
+        label_id   = int(np.argmax(prob_row))
+        confidence = float(prob_row[label_id]) * 100
+        results.append({
+            "original_text":  texts[i],
+            "processed_text": processed[i],
+            "sentiment":      SENTIMENT_LABELS[label_id],
+            "emoji":          SENTIMENT_EMOJI[label_id],
+            "confidence":     confidence,
+            "label_id":       label_id,
+        })
+    return results
+
+# ── Load resources ───────────────────────────────────────────────────────────
+model, tokenizer, load_errors = load_model_and_tokenizer()
+
+# ── UI ───────────────────────────────────────────────────────────────────────
+st.title("🧠 Sentiment Analyser")
+st.caption("Powered by a pre-trained LSTM-CNN hybrid model.")
+
+if load_errors:
+    for err in load_errors:
+        st.error(err)
+    st.info(
+        "**Troubleshooting checklist:**\n"
+        "1. Open each file in Google Drive → Share → change to **Anyone with the link → Viewer**.\n"
+        "2. Confirm the File IDs in `app.py` match the URLs of your Drive files.\n"
+        "3. Make sure `gdown` is in your `requirements.txt`.\n"
+        "4. Check the Streamlit Cloud logs for the full traceback."
+    )
+    st.stop()
+
+# ── Tabs ─────────────────────────────────────────────────────────────────────
+tab_single, tab_batch = st.tabs(["✏️ Single Text", "📄 Batch CSV"])
+
+# ── Tab 1 · Single prediction ────────────────────────────────────────────────
+with tab_single:
+    st.subheader("Predict sentiment for a single text")
+    user_text = st.text_area(
+        "Enter text:",
+        placeholder="e.g. I love this product, it works perfectly!",
+        height=120,
+    )
+
+    if st.button("Analyse", type="primary"):
+        if not user_text.strip():
+            st.warning("Please enter some text before clicking Analyse.")
+        else:
+            with st.spinner("Analysing…"):
+                results = predict([user_text], model, tokenizer)
+            r = results[0]
+
+            if not r["processed_text"]:
+                st.warning(
+                    "The text was empty after preprocessing (only stopwords / "
+                    "symbols). Try a longer, more descriptive sentence."
+                )
+            else:
+                color = SENTIMENT_COLOR[r["label_id"]]
+                st.markdown(
+                    f"<h2 style='color:{color}'>"
+                    f"{r['emoji']} {r['sentiment']}"
+                    f"</h2>",
+                    unsafe_allow_html=True,
+                )
+                st.metric("Confidence", f"{r['confidence']:.1f}%")
+                with st.expander("Processed text (after cleaning)"):
+                    st.code(r["processed_text"])
+
+# ── Tab 2 · Batch prediction ─────────────────────────────────────────────────
+with tab_batch:
+    st.subheader("Predict sentiment for a CSV file")
+    st.info(
+        "Upload a CSV that contains a column named **`full_text`**. "
+        "Results will be available for download."
+    )
+
+    uploaded = st.file_uploader("Choose a CSV file", type=["csv"])
+
+    if uploaded is not None:
+        try:
+            df = pd.read_csv(uploaded)
+        except Exception as exc:
+            st.error(f"Could not read the CSV: {exc}")
+            st.stop()
+
+        st.write("**Preview (first 5 rows):**")
+        st.dataframe(df.head())
+
+        if "full_text" not in df.columns:
+            st.error(
+                "The uploaded CSV must contain a column named **`full_text`**. "
+                f"Columns found: `{list(df.columns)}`"
+            )
+        else:
+            df = df.copy()
+            df["full_text"] = df["full_text"].astype(str)
+
+            # Drop rows where full_text is NaN / empty
+            mask_valid = df["full_text"].str.strip().str.lower() != "nan"
+            df_valid   = df[mask_valid].copy()
+
+            if df_valid.empty:
+                st.warning("No valid rows found in `full_text` column.")
+            else:
+                with st.spinner(f"Analysing {len(df_valid):,} rows…"):
+                    results = predict(df_valid["full_text"].tolist(), model, tokenizer)
+
+                df_valid["processed_text"]      = [r["processed_text"] for r in results]
+                df_valid["predicted_sentiment"]  = [r["sentiment"]      for r in results]
+                df_valid["confidence_%"]         = [round(r["confidence"], 2) for r in results]
+
+                st.success(f"Done! Predicted {len(df_valid):,} rows.")
+
+                # Distribution chart
+                counts = df_valid["predicted_sentiment"].value_counts()
+                st.subheader("Sentiment distribution")
+                st.bar_chart(counts)
+
+                # Preview table
+                st.subheader("Results preview (first 20 rows)")
+                st.dataframe(
+                    df_valid[["full_text", "predicted_sentiment", "confidence_%"]].head(20)
+                )
+
+                # Download
+                csv_bytes = df_valid.to_csv(index=False).encode("utf-8")
+                st.download_button(
+                    label="⬇️ Download full results as CSV",
+                    data=csv_bytes,
+                    file_name="predicted_sentiments.csv",
+                    mime="text/csv",
+                )
+
+# ── Footer ───────────────────────────────────────────────────────────────────
+st.divider()
+st.caption(
+    f"Model: `{MODEL_PATH}` · Tokenizer: `{TOKENIZER_PATH}` · "
+    f"TensorFlow {tf.__version__} · Python {sys.version.split()[0]}"
+)

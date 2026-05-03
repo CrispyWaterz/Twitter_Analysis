@@ -1,11 +1,8 @@
-pandas
-numpy
-scikit-learn
-nltk
-tensorflow
-keras-tuner
-matplotlib
-seaborn
 streamlit
+tensorflow==2.13.0
+keras==2.13.1
+joblib
+nltk
+numpy==1.24.3
+pandas
 scikit-learn
-streamlit-extras

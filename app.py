@@ -1,5 +1,4 @@
 # app.py — Production-ready Streamlit Sentiment Analysis App
-# Model and tokenizer are committed directly to the repo.
 
 import os
 import re
@@ -19,7 +18,7 @@ SENTIMENT_EMOJI  = {0: "😠", 1: "😐", 2: "😊"}
 SENTIMENT_COLOR  = {0: "#e74c3c", 1: "#f39c12", 2: "#2ecc71"}
 
 BASE_DIR       = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH     = os.path.join(BASE_DIR, "hybrid_sentiment_model.h5")
+MODEL_PATH     = os.path.join(BASE_DIR, "model_weights.npy")
 TOKENIZER_PATH = os.path.join(BASE_DIR, "tokenizer_labeled.joblib")
 
 st.set_page_config(page_title="Sentiment Analyser", page_icon="🐦", layout="centered")
@@ -50,14 +49,26 @@ def preprocess_text(text: str) -> str:
 @st.cache_resource(show_spinner="Loading model and tokenizer...")
 def load_model_and_tokenizer():
     errors = []
-    for path, label in [(MODEL_PATH, "hybrid_sentiment_model.h5"),
+    for path, label in [(MODEL_PATH, "model_weights.npy"),
                         (TOKENIZER_PATH, "tokenizer_labeled.joblib")]:
         if not os.path.exists(path):
-            errors.append(f"❌ `{label}` not found. Files present: `{os.listdir(BASE_DIR)}`")
+            errors.append(f"❌ `{label}` not found. Files: `{os.listdir(BASE_DIR)}`")
     if errors:
         return None, None, errors
     try:
-        model = tf.keras.models.load_model(MODEL_PATH)
+        weights = np.load(MODEL_PATH, allow_pickle=True)
+        model = tf.keras.Sequential([
+            tf.keras.layers.Embedding(input_dim=25430, output_dim=100,
+                                      input_length=100, name="embedding_layer"),
+            tf.keras.layers.Conv1D(64, 5, activation="relu", name="conv1d_layer"),
+            tf.keras.layers.Dropout(0.2, name="dropout_cnn"),
+            tf.keras.layers.Bidirectional(
+                tf.keras.layers.LSTM(96), name="bidirectional_lstm_layer"),
+            tf.keras.layers.Dropout(0.3, name="dropout_lstm"),
+            tf.keras.layers.Dense(3, activation="softmax", name="output_layer"),
+        ])
+        model.build(input_shape=(None, 100))
+        model.set_weights(weights)
     except Exception as exc:
         return None, None, [f"❌ Model failed to load: `{exc}`"]
     try:

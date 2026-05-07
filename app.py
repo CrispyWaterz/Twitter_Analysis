@@ -1,17 +1,9 @@
 # app.py — Production-ready Streamlit Sentiment Analysis App
-<<<<<<< HEAD
-=======
-# Model and tokenizer are downloaded from Google Drive on first startup
-# and cached locally so subsequent restarts skip the download.
-#
-# To update the files, change the FILE_IDS below and redeploy.
->>>>>>> 329f4b0 (Add numpy weights and updated app)
 
 import os
 import re
 import sys
 
-import gdown
 import joblib
 import nltk
 import numpy as np
@@ -20,57 +12,18 @@ import streamlit as st
 import tensorflow as tf
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-# ── Constants (must match values used during training) ──────────────────────
 MAX_SEQUENCE_LENGTH = 100
 SENTIMENT_LABELS = {0: "Negative", 1: "Neutral", 2: "Positive"}
 SENTIMENT_EMOJI  = {0: "😠", 1: "😐", 2: "😊"}
 SENTIMENT_COLOR  = {0: "#e74c3c", 1: "#f39c12", 2: "#2ecc71"}
 
-<<<<<<< HEAD
 BASE_DIR       = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH     = os.path.join(BASE_DIR, "model_weights.npy")
 TOKENIZER_PATH = os.path.join(BASE_DIR, "tokenizer_labeled.joblib")
-=======
-# ── Google Drive file IDs ────────────────────────────────────────────────────
-# Share each file in Drive with "Anyone with the link → Viewer" or it will
-# return an HTML permission-error page instead of the actual file.
-MODEL_GDRIVE_ID     = "1Ix6TNefsFk0f31JfpjeNrsBCx_ffu9YK"
-TOKENIZER_GDRIVE_ID = "1GDukP-GtIJIrX5BShSolAz2xYRqtypEI"
->>>>>>> 329f4b0 (Add numpy weights and updated app)
 
-# Local paths where the files are cached after the first download.
-# Streamlit Cloud gives each deployment ephemeral disk space; the cache
-# persists for the lifetime of the running container (~hours / until restart).
-CACHE_DIR      = "/tmp/sentiment_model_cache"
-MODEL_PATH     = os.path.join(CACHE_DIR, "hybrid_sentiment_model.keras")
-TOKENIZER_PATH = os.path.join(CACHE_DIR, "tokenizer_labeled.joblib")
+st.set_page_config(page_title="Sentiment Analyser", page_icon="🐦", layout="centered")
 
-os.makedirs(CACHE_DIR, exist_ok=True)
-
-
-def download_from_gdrive(file_id: str, dest_path: str, label: str) -> list[str]:
-    """Download a file from Google Drive using gdown. Returns a list of errors."""
-    url = f"https://drive.google.com/uc?id={file_id}"
-    try:
-        gdown.download(url, dest_path, quiet=False, fuzzy=True)
-        if not os.path.exists(dest_path) or os.path.getsize(dest_path) == 0:
-            return [
-                f"❌ Downloaded `{label}` appears to be empty. "
-                "Make sure the file is shared as **Anyone with the link → Viewer** in Google Drive."
-            ]
-    except Exception as exc:
-        return [f"❌ Failed to download `{label}` from Google Drive: `{exc}`"]
-    return []
-
-# ── Page config ──────────────────────────────────────────────────────────────
-st.set_page_config(
-    page_title="Sentiment Analyser",
-    page_icon="🧠",
-    layout="centered",
-)
-
-# ── NLTK setup (cached so it only runs once per session) ────────────────────
-@st.cache_resource(show_spinner="Downloading NLTK data…")
+@st.cache_resource(show_spinner="Downloading NLTK data...")
 def load_nltk():
     for pkg in ("stopwords", "wordnet", "punkt", "punkt_tab"):
         nltk.download(pkg, quiet=True)
@@ -80,7 +33,6 @@ def load_nltk():
 
 stop_words, lemmatizer = load_nltk()
 
-# ── Text preprocessing (identical to training pipeline) ─────────────────────
 def preprocess_text(text: str) -> str:
     if not isinstance(text, str):
         return ""
@@ -90,37 +42,19 @@ def preprocess_text(text: str) -> str:
     text = re.sub(r"#\w+", "", text)
     text = re.sub(r"[^a-zA-Z\s]", "", text)
     tokens = nltk.word_tokenize(text)
-    tokens = [
-        lemmatizer.lemmatize(w)
-        for w in tokens
-        if w not in stop_words and len(w) > 1
-    ]
+    tokens = [lemmatizer.lemmatize(w) for w in tokens
+               if w not in stop_words and len(w) > 1]
     return " ".join(tokens)
 
-# ── Model & tokenizer loader (cached) ───────────────────────────────────────
-@st.cache_resource(show_spinner="Downloading & loading model… (first run only, may take a minute)")
+@st.cache_resource(show_spinner="Loading model and tokenizer...")
 def load_model_and_tokenizer():
     errors = []
-<<<<<<< HEAD
     for path, label in [(MODEL_PATH, "model_weights.npy"),
                         (TOKENIZER_PATH, "tokenizer_labeled.joblib")]:
         if not os.path.exists(path):
             errors.append(f"❌ `{label}` not found. Files: `{os.listdir(BASE_DIR)}`")
-=======
-
-    # Download model if not already cached
-    if not os.path.exists(MODEL_PATH) or os.path.getsize(MODEL_PATH) == 0:
-        errors += download_from_gdrive(MODEL_GDRIVE_ID, MODEL_PATH, "model")
-
-    # Download tokenizer if not already cached
-    if not os.path.exists(TOKENIZER_PATH) or os.path.getsize(TOKENIZER_PATH) == 0:
-        errors += download_from_gdrive(TOKENIZER_GDRIVE_ID, TOKENIZER_PATH, "tokenizer")
-
->>>>>>> 329f4b0 (Add numpy weights and updated app)
     if errors:
         return None, None, errors
-
-    # Load model
     try:
         weights = np.load(MODEL_PATH, allow_pickle=True)
         model = tf.keras.Sequential([
@@ -136,25 +70,14 @@ def load_model_and_tokenizer():
         model.build(input_shape=(None, 100))
         model.set_weights(weights)
     except Exception as exc:
-        return None, None, [
-            f"❌ Model downloaded but failed to load: `{exc}`\n\n"
-            "This usually means the `.keras` file is corrupted or the wrong format. "
-            "Re-export it with `model.save('hybrid_sentiment_model.keras')` in Colab."
-        ]
-
-    # Load tokenizer
+        return None, None, [f"❌ Model failed to load: `{exc}`"]
     try:
         tokenizer = joblib.load(TOKENIZER_PATH)
     except Exception as exc:
-        return None, None, [
-            f"❌ Tokenizer downloaded but failed to load: `{exc}`\n\n"
-            "Re-export it with `joblib.dump(tokenizer_labeled, 'tokenizer_labeled.joblib')` in Colab."
-        ]
-
+        return None, None, [f"❌ Tokenizer failed to load: `{exc}`"]
     return model, tokenizer, []
 
-# ── Prediction helper ────────────────────────────────────────────────────────
-def predict(texts: list[str], model, tokenizer) -> list[dict]:
+def predict(texts, model, tokenizer):
     processed = [preprocess_text(t) for t in texts]
     sequences = tokenizer.texts_to_sequences(processed)
     padded    = pad_sequences(sequences, maxlen=MAX_SEQUENCE_LENGTH,
@@ -174,130 +97,69 @@ def predict(texts: list[str], model, tokenizer) -> list[dict]:
         })
     return results
 
-# ── Load resources ───────────────────────────────────────────────────────────
 model, tokenizer, load_errors = load_model_and_tokenizer()
 
-# ── UI ───────────────────────────────────────────────────────────────────────
-st.title("🧠 Sentiment Analyser")
+st.title("Twitter Sentiment Analyser")
 st.caption("Powered by a pre-trained LSTM-CNN hybrid model.")
 
 if load_errors:
     for err in load_errors:
         st.error(err)
-    st.info(
-        "**Troubleshooting checklist:**\n"
-        "1. Open each file in Google Drive → Share → change to **Anyone with the link → Viewer**.\n"
-        "2. Confirm the File IDs in `app.py` match the URLs of your Drive files.\n"
-        "3. Make sure `gdown` is in your `requirements.txt`.\n"
-        "4. Check the Streamlit Cloud logs for the full traceback."
-    )
     st.stop()
 
-# ── Tabs ─────────────────────────────────────────────────────────────────────
-tab_single, tab_batch = st.tabs(["✏️ Single Text", "📄 Batch CSV"])
+tab_single, tab_batch = st.tabs(["Single Text", "Batch CSV"])
 
-# ── Tab 1 · Single prediction ────────────────────────────────────────────────
 with tab_single:
     st.subheader("Predict sentiment for a single text")
-    user_text = st.text_area(
-        "Enter text:",
-        placeholder="e.g. I love this product, it works perfectly!",
-        height=120,
-    )
-
+    user_text = st.text_area("Enter text:", height=120,
+                             placeholder="e.g. I love this product, it works perfectly!")
     if st.button("Analyse", type="primary"):
         if not user_text.strip():
-            st.warning("Please enter some text before clicking Analyse.")
+            st.warning("Please enter some text.")
         else:
-            with st.spinner("Analysing…"):
+            with st.spinner("Analysing..."):
                 results = predict([user_text], model, tokenizer)
             r = results[0]
-
             if not r["processed_text"]:
-                st.warning(
-                    "The text was empty after preprocessing (only stopwords / "
-                    "symbols). Try a longer, more descriptive sentence."
-                )
+                st.warning("Text was empty after preprocessing.")
             else:
                 color = SENTIMENT_COLOR[r["label_id"]]
-                st.markdown(
-                    f"<h2 style='color:{color}'>"
-                    f"{r['emoji']} {r['sentiment']}"
-                    f"</h2>",
-                    unsafe_allow_html=True,
-                )
+                st.markdown(f"<h2 style='color:{color}'>{r['emoji']} {r['sentiment']}</h2>",
+                            unsafe_allow_html=True)
                 st.metric("Confidence", f"{r['confidence']:.1f}%")
-                with st.expander("Processed text (after cleaning)"):
+                with st.expander("Processed text"):
                     st.code(r["processed_text"])
 
-# ── Tab 2 · Batch prediction ─────────────────────────────────────────────────
 with tab_batch:
     st.subheader("Predict sentiment for a CSV file")
-    st.info(
-        "Upload a CSV that contains a column named **`full_text`**. "
-        "Results will be available for download."
-    )
-
+    st.info("Upload a CSV with a column named **`full_text`**.")
     uploaded = st.file_uploader("Choose a CSV file", type=["csv"])
-
     if uploaded is not None:
         try:
             df = pd.read_csv(uploaded)
         except Exception as exc:
-            st.error(f"Could not read the CSV: {exc}")
+            st.error(f"Could not read CSV: {exc}")
             st.stop()
-
-        st.write("**Preview (first 5 rows):**")
         st.dataframe(df.head())
-
         if "full_text" not in df.columns:
-            st.error(
-                "The uploaded CSV must contain a column named **`full_text`**. "
-                f"Columns found: `{list(df.columns)}`"
-            )
+            st.error(f"No `full_text` column found. Columns: `{list(df.columns)}`")
         else:
-            df = df.copy()
             df["full_text"] = df["full_text"].astype(str)
-
-            # Drop rows where full_text is NaN / empty
-            mask_valid = df["full_text"].str.strip().str.lower() != "nan"
-            df_valid   = df[mask_valid].copy()
-
+            df_valid = df[df["full_text"].str.strip().str.lower() != "nan"].copy()
             if df_valid.empty:
-                st.warning("No valid rows found in `full_text` column.")
+                st.warning("No valid rows found.")
             else:
-                with st.spinner(f"Analysing {len(df_valid):,} rows…"):
+                with st.spinner(f"Analysing {len(df_valid):,} rows..."):
                     results = predict(df_valid["full_text"].tolist(), model, tokenizer)
-
-                df_valid["processed_text"]      = [r["processed_text"] for r in results]
-                df_valid["predicted_sentiment"]  = [r["sentiment"]      for r in results]
-                df_valid["confidence_%"]         = [round(r["confidence"], 2) for r in results]
-
+                df_valid["processed_text"]     = [r["processed_text"] for r in results]
+                df_valid["predicted_sentiment"] = [r["sentiment"]      for r in results]
+                df_valid["confidence_%"]        = [round(r["confidence"], 2) for r in results]
                 st.success(f"Done! Predicted {len(df_valid):,} rows.")
+                st.bar_chart(df_valid["predicted_sentiment"].value_counts())
+                st.dataframe(df_valid[["full_text", "predicted_sentiment", "confidence_%"]].head(20))
+                st.download_button("Download results as CSV",
+                                   data=df_valid.to_csv(index=False).encode("utf-8"),
+                                   file_name="predicted_sentiments.csv", mime="text/csv")
 
-                # Distribution chart
-                counts = df_valid["predicted_sentiment"].value_counts()
-                st.subheader("Sentiment distribution")
-                st.bar_chart(counts)
-
-                # Preview table
-                st.subheader("Results preview (first 20 rows)")
-                st.dataframe(
-                    df_valid[["full_text", "predicted_sentiment", "confidence_%"]].head(20)
-                )
-
-                # Download
-                csv_bytes = df_valid.to_csv(index=False).encode("utf-8")
-                st.download_button(
-                    label="⬇️ Download full results as CSV",
-                    data=csv_bytes,
-                    file_name="predicted_sentiments.csv",
-                    mime="text/csv",
-                )
-
-# ── Footer ───────────────────────────────────────────────────────────────────
 st.divider()
-st.caption(
-    f"Model: `{MODEL_PATH}` · Tokenizer: `{TOKENIZER_PATH}` · "
-    f"TensorFlow {tf.__version__} · Python {sys.version.split()[0]}"
-)
+st.caption(f"TF {tf.__version__} | Python {sys.version.split()[0]}")

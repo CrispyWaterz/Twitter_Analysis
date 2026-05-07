@@ -3,6 +3,6 @@ tensorflow==2.13.0
 keras==2.13.1
 joblib
 nltk
-numpy==1.26
+numpy>=1.26
 pandas
 scikit-learn

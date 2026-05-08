@@ -101,7 +101,7 @@ def predict(texts, model, tokenizer):
 model, tokenizer, load_errors = load_model_and_tokenizer()
 
 # ── UI ────────────────────────────────────────────────────────────────────────
-st.title("🐦 Twitter Sentiment Analyser")
+st.title("Twitter Sentiment Analyser")
 st.caption("Powered by a pre-trained LSTM-CNN hybrid model.")
 
 if load_errors:

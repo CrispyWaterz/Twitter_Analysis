@@ -14,7 +14,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 MAX_SEQUENCE_LENGTH = 100
 SENTIMENT_LABELS = {0: "Negative", 1: "Neutral", 2: "Positive"}
-SENTIMENT_EMOJI  = {0: "😠", 1: "😐", 2: "😊"}
+SENTIMENT_EMOJI  = {0: "➖", 1: "🟰", 2: "➕"}
 SENTIMENT_COLOR  = {0: "#e74c3c", 1: "#f39c12", 2: "#2ecc71"}
 
 BASE_DIR       = os.path.dirname(os.path.abspath(__file__))

@@ -21,7 +21,7 @@ BASE_DIR       = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH     = os.path.join(BASE_DIR, "model_weights.npy")
 TOKENIZER_PATH = os.path.join(BASE_DIR, "tokenizer_labeled.joblib")
 
-st.set_page_config(page_title="Twitter Sentiment Analyser", page_icon="🐦", layout="centered")
+st.set_page_config(page_title="Twitter Sentiment Analyser", page_icon="💬", layout="centered")
 
 @st.cache_resource(show_spinner="Downloading NLTK data...")
 def load_nltk():
